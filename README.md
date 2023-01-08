@@ -5,15 +5,15 @@
 ## Introduction
     This repo containt practical asignment about NodeJS using Express framework and MongoDB. 
 ## Installation
-Use the package manager [npm](https://www.npmjs.com/) to **install**.
+    Use the package manager [npm](https://www.npmjs.com/) to **install**.
 
 ## Section
- 1. [ASINGMENT 1](https://github.com/huy-raw/asignment-nodejs-fptu/tree/main/ASIGNMENT_1)
+ 1. [ASIGNMENT 1](https://github.com/huy-raw/asignment-nodejs-fptu/tree/main/ASIGNMENT_1)
 
 ## Contributing
-Pull requests are welcome. For major changes, please open an issue first
-to discuss what you would like to change.
+    Pull requests are welcome. For major changes, please open an issue first
+    to discuss what you would like to change.
 
-Please make sure to update tests as appropriate.
+    Please make sure to update tests as appropriate.
 
 
