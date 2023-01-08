@@ -7,7 +7,7 @@ Use the package manager [npm](https://www.npmjs.com/) to **install**.
 
 ## Usage
 This repo service for ASIGNMENT SDN301 : 
-    - [ASINGMENT 1](https://github.com/huy-raw/asignment-nodejs-fptu/tree/main/ASIGNMENT_1)
+    - [[ASINGMENT 1](https://github.com/huy-raw/asignment-nodejs-fptu/tree/main/ASIGNMENT_1)]
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first
