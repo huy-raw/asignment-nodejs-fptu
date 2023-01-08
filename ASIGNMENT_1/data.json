@@ -1,0 +1,26 @@
+{
+    "national": [
+        {
+            "id": 1,
+            "name": "Anghentina"
+        },
+        {
+            "id": 2,
+            "name": "USA"
+        },
+        {
+            "id": 3,
+            "name": "Potugal"
+        }
+    ],
+    "player": [
+        {
+            "id": 1,
+            "name": "Cristiano Ronaldo"
+        },
+        {
+            "id": 2,
+            "name": "Leo Messi"
+        }
+    ]
+}
