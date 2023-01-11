@@ -9,7 +9,8 @@ const PORT = '5000';
 const HOSTNAME = 'localhost';
 
 app.use(express.json())
-
+// app.use('morgan')
+// app.use('bodyParser')
 
 //ROUTERS
 app.use('/nationals', nationalRouter)

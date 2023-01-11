@@ -17,7 +17,6 @@ const nationalController = {
     updateNationalById: async (req, res) => {
         res.status(200).json(`UPDATE national have Id: ${req.params.nationalId}`)
     }
-
 }
 
 export default nationalController;
