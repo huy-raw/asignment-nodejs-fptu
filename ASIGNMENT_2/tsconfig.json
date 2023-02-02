@@ -4,13 +4,24 @@
     "moduleResolution": "node",
     "pretty": true,
     "sourceMap": true,
-    "target": "es6",
+    "target": "esnext",
     "outDir": "./dist",
     "baseUrl": "./src",
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "lib": [
+      "dom",
+      "es6"
+    ],
   },
-  "include": ["src/**/*.ts", "src/index.ts"],
-  "exclude": ["node_modules"],
-  "typeRoots": ["./node_modules/@types"]
+  "include": [
+    "src/**/*.ts",
+    "index.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "ts-node": {
+    "esm": true
+  }
 }

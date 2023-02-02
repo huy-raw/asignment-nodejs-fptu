@@ -1,18 +1,27 @@
-var mongoose = require('mongoose')
-const { SChema } = mongoose
+import mongoose from "mongoose";
 
-const nationSchema = new SChema(
+const { Schema } = mongoose
+
+export interface NationModel {
+    name: String,
+    img: String
+}
+
+const nationSchema = new Schema(
     {
-        _id: mongoose.Schema.Types.ObjectId,
         name: {
             type: String,
-            require: true
+            require: true,
+            unique: true
         },
+        img: {
+            type: String
+        },
+
     },
     {
         timestamps: true
     }
 );
 
-
-export default mongoose.model('Nation', nationSchema)
+export const Nation = mongoose.model('Nation', nationSchema)

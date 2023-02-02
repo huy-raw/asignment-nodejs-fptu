@@ -5,11 +5,11 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import morgan from 'morgan'
 import mongoose from 'mongoose'
-import config from "./configs/config";
-
+import dotenv from 'dotenv'
+import nationRoute from "./src/routes/nation.route"
 
 const app = express();
-
+dotenv.config()
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -20,11 +20,12 @@ app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
+// app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan("dev"));
 
+//route
+app.use("/nation", nationRoute)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -34,7 +35,7 @@ app.use(function (req, res, next) {
 //set-up db
 mongoose.set("strictQuery", false);
 mongoose
-  .connect(config.DB_URL, {
+  .connect(process.env.DB_URL, {
     dbName: "asignment-2",
     autoIndex: true
   })
@@ -57,4 +58,6 @@ app.use(function (err, req, res, next) {
   res.render("error");
 });
 
-module.exports = app;
+app.listen( process.env.PORT, () => {
+  console.log(`Server running at ${process.env.PORT}`);
+});
