@@ -10,6 +10,9 @@
 ## Section
 [ASIGNMENT 1](https://github.com/huy-raw/asignment-nodejs-fptu/tree/main/ASIGNMENT_1)
 
+## Section
+[ASIGNMENT 2](https://github.com/huy-raw/asignment-nodejs-fptu/tree/main/ASIGNMENT_2)
+
 ## Contributing
     Pull requests are welcome. For major changes, please open an issue first
     to discuss what you would like to change.
