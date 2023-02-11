@@ -38,5 +38,5 @@ const nationSchema = new mongoose_1.Schema({
     timestamps: true,
     autoIndex: true
 });
-exports.Nation = mongoose_1.default.model('Nation', nationSchema);
+exports.Nation = mongoose_1.default.model('nations', nationSchema);
 //# sourceMappingURL=nation.model.js.map

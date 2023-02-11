@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateOne = exports.deleteOne = exports.create = exports.findById = exports.findAll = void 0;
+exports.updateById = exports.deleteById = exports.create = exports.findById = exports.findAll = void 0;
 const nation_model_1 = require("@/models/nation.model");
 const findAll = async () => {
     try {
@@ -22,15 +22,14 @@ const findById = async (id) => {
 exports.findById = findById;
 const create = async (payload) => {
     try {
-        const response = await nation_model_1.Nation.create(payload);
-        return response;
+        return await nation_model_1.Nation.create(payload);
     }
     catch (error) {
         console.log(error);
     }
 };
 exports.create = create;
-const deleteOne = async (id) => {
+const deleteById = async (id) => {
     try {
         return nation_model_1.Nation.deleteOne({ _id: id });
     }
@@ -38,8 +37,8 @@ const deleteOne = async (id) => {
         console.log(error);
     }
 };
-exports.deleteOne = deleteOne;
-const updateOne = async (id, payload) => {
+exports.deleteById = deleteById;
+const updateById = async (id, payload) => {
     try {
         return nation_model_1.Nation.where({ _id: id }).update({
             name: payload.name,
@@ -50,5 +49,5 @@ const updateOne = async (id, payload) => {
         console.log(error);
     }
 };
-exports.updateOne = updateOne;
+exports.updateById = updateById;
 //# sourceMappingURL=nation.service.js.map

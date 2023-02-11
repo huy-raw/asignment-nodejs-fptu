@@ -18,14 +18,13 @@ export const findById = async (id: String): Promise<any> => {
 
 export const create = async (payload: INation): Promise<any> => {
     try {
-        const response = await Nation.create(payload);
-        return response;
+        return await Nation.create(payload);
     } catch (error) {
         console.log(error)
     }
 }
 
-export const deleteOne = async (id: String): Promise<any> => {
+export const deleteById = async (id: String): Promise<any> => {
     try {
         return Nation.deleteOne({ _id: id });
     } catch (error) {
@@ -33,7 +32,7 @@ export const deleteOne = async (id: String): Promise<any> => {
     }
 }
 
-export const updateOne = async (id: String, payload: INation): Promise<any> => {
+export const updateById = async (id: String, payload: INation): Promise<any> => {
     try {
         return Nation.where({ _id: id }).update({
             name: payload.name,

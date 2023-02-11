@@ -10,7 +10,7 @@ const nationSchema = new Schema(
         name: {
             type: String,
             require: true,
-            unique: true,
+            uniqued: true,
         },
         description: {
             type: String
@@ -24,6 +24,6 @@ const nationSchema = new Schema(
 
 
 
-export const Nation = mongoose.model('Nation', nationSchema)
+export const Nation = mongoose.model('nations', nationSchema)
 
 

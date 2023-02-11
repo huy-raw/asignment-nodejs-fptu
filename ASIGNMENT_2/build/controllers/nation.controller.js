@@ -46,7 +46,7 @@ const getNationById = async (req, res) => {
 exports.getNationById = getNationById;
 const deleteNationById = async (req, res) => {
     const id = req.params["id"];
-    return res.status(200).json(await NationService.deleteOne(id));
+    return res.status(200).json(await NationService.deleteById(id));
 };
 exports.deleteNationById = deleteNationById;
 const updateNationById = async (req, res) => {
@@ -55,7 +55,7 @@ const updateNationById = async (req, res) => {
         description: req.body.description
     };
     const id = req.params["id"];
-    return res.status(200).json(await NationService.updateOne(id, payload));
+    return res.status(200).json(await NationService.updateById(id, payload));
 };
 exports.updateNationById = updateNationById;
 //# sourceMappingURL=nation.controller.js.map

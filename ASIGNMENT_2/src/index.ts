@@ -1,6 +1,6 @@
-import { App } from "./config/app";
+import { app } from "./config/app";
 import { connectDB } from "./config/database";
 
 
-App()
+app()
 connectDB()

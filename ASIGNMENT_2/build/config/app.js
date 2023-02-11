@@ -26,12 +26,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.App = void 0;
+exports.app = void 0;
 const nation_route_1 = __importDefault(require("@/routes/nation.route"));
+const player_route_1 = __importDefault(require("@/routes/player.route"));
 const express_1 = __importDefault(require("express"));
 const path = __importStar(require("path"));
 require('dotenv').config();
-const App = () => {
+const app = () => {
     const app = (0, express_1.default)();
     const port = process.env['PORT'] || 8080;
     //set up view engine
@@ -51,12 +52,13 @@ const App = () => {
         // res.render('index');
         res.status(200).json("OK");
     });
-    app.use("/nations", nation_route_1.default);
+    app.use('/nations', nation_route_1.default);
+    app.use('/players', player_route_1.default);
     app.use(express_1.default.json());
     app.use(express_1.default.urlencoded({ extended: true }));
     app.listen(port, () => {
         return console.log(`Express is listening at http://localhost:${port}`);
     });
 };
-exports.App = App;
+exports.app = app;
 //# sourceMappingURL=app.js.map

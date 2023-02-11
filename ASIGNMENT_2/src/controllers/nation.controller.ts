@@ -24,7 +24,7 @@ export const getNationById = async (req: Request, res: Response): Promise<any> =
 
 export const deleteNationById = async (req: Request, res: Response): Promise<any> => {
     const id: any = req.params["id"]
-    return res.status(200).json(await NationService.deleteOne(id));
+    return res.status(200).json(await NationService.deleteById(id));
 }
 
 export const updateNationById = async (req: Request, res: Response): Promise<any> => {
@@ -33,5 +33,5 @@ export const updateNationById = async (req: Request, res: Response): Promise<any
         description: req.body.description
     }
     const id: any = req.params["id"]
-    return res.status(200).json(await NationService.updateOne(id, payload))
+    return res.status(200).json(await NationService.updateById(id, payload))
 }

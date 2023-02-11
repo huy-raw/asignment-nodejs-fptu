@@ -1,9 +1,10 @@
 import nationRouter from '@/routes/nation.route';
+import playerRouter from '@/routes/player.route';
 import express, { Express, Request, Response } from 'express';
 import * as path from "path";
 require('dotenv').config()
 
-export const App = () => {
+export const app = () => {
 
     const app: Express = express();
     const port = process.env['PORT'] || 8080
@@ -28,7 +29,8 @@ export const App = () => {
         // res.render('index');
         res.status(200).json("OK")
     });
-    app.use("/nations", nationRouter)
+    app.use('/nations', nationRouter)
+    app.use('/players', playerRouter)
 
     app.use(express.json())
     app.use(express.urlencoded({ extended: true }))
