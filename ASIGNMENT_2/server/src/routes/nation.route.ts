@@ -10,6 +10,7 @@ nationRouter
     .post('/', NationController.createNation)
     .get('/:id', NationController.getNationById)
     .delete('/:id', NationController.deleteNationById)
+    .patch('/:id', NationController.updateNationById)
     .put('/:id', NationController.updateNationById)
 
 export default nationRouter

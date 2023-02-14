@@ -9,7 +9,8 @@ playerRouter
     .post('/', PlayerController.createPlayer)
     .get('/', PlayerController.getAllPlayer)
     .get('/:id', PlayerController.getPlayerById)
-    .put('/:id', PlayerController.updateById)
+    .patch('/:id', PlayerController.updateById)
     .delete('/:id', PlayerController.deleteById)
+    .put('/:id', PlayerController.updateById)
 
 export default playerRouter
