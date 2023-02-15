@@ -38,7 +38,7 @@ export const login = async (payload: LoginRequest) => {
             }
             const refeshtoken = await generateToken(payloadToken, 60 * 60 * 24);
             await User.findOne({ _id: user._id })
-                .update({ refeshToken: refeshtoken })
+                .updateOne({ refeshToken: refeshtoken })
         } else {
             //check token expired
             const checkExpiredToken = await decodeToken(user.refeshToken)
@@ -50,7 +50,7 @@ export const login = async (payload: LoginRequest) => {
                 }
                 const refeshtoken = await generateToken(payloadToken, 60 * 60 * 24);
                 await User.findOne({ _id: user._id })
-                    .update({ refeshToken: refeshtoken })
+                    .updateOne({ refeshToken: refeshtoken })
             }
         }
         return await User.findById({ _id: user._id })
