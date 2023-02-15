@@ -1,37 +1,76 @@
-import { INation } from "@/models/nation.model";
+import { handleErrorMessage } from "@/utils/error";
 import { Request, Response } from "express";
 import * as NationService from 'services/nation.service'
+import { CreateNationRequest, UpdateNationRequest, QueryOption } from '../utils/request';
 
 
-export const getAllNation = async (_req: Request, res: Response): Promise<any> => {
-    const response = await NationService.findAll()
-    return res.status(200).json(response)
+export const getNationByOption = async (req: Request, res: Response): Promise<any> => {
+    try {
+        const queryOption: QueryOption = {
+            page: req.query["page"] || 1 as any,
+            limit: req.query["limit"] || 5 as any,
+            skip: req.query["skip"] || 0 as any,
+            sort: req.query["sort"] as any,
+            filter: req.query["filter"] || null as any,
+        }
+        const response = await NationService.findByOption(queryOption)
+        return res.status(200).json({
+            data: response
+        })
+    } catch (error) {
+        res.status(500).json(handleErrorMessage(error))
+    }
 }
 
 export const createNation = async (req: Request, res: Response): Promise<any> => {
-    const payload: INation = {
-        name: req.body.name,
-        description: req.body.description
+    try {
+        const payload: CreateNationRequest = {
+            name: req.body.name,
+            description: req.body.description
+        }
+        const response = await NationService.create(payload)
+        return res.status(200).json({
+            data: response
+        })
+    } catch (error) {
+        res.status(500).json(handleErrorMessage(error))
     }
-    return res.status(200).json(await NationService.create(payload))
 }
 
 export const getNationById = async (req: Request, res: Response): Promise<any> => {
-    const id: any = req.params["id"]
-    const response = await NationService.findById(id)
-    return res.status(200).json(response);
+    try {
+        const id: any = req.params["id"]
+        const response = await NationService.findById(id)
+        return res.status(200).json(response);
+    } catch (error) {
+        res.status(500).json(handleErrorMessage(error))
+    }
 }
 
 export const deleteNationById = async (req: Request, res: Response): Promise<any> => {
-    const id: any = req.params["id"]
-    return res.status(200).json(await NationService.deleteById(id));
+    try {
+        const id: any = req.params["id"]
+        const response = await NationService.deleteById(id)
+        return res.status(200).json({
+            data: response
+        });
+    } catch (error) {
+        res.status(500).json(handleErrorMessage(error))
+    }
 }
 
 export const updateNationById = async (req: Request, res: Response): Promise<any> => {
-    const payload: INation = {
-        name: req.body.name,
-        description: req.body.description
+    try {
+        const payload: UpdateNationRequest = {
+            name: req.body.name,
+            description: req.body.description
+        }
+        const id: any = req.params["id"]
+        const response = await NationService.updateById(id, payload)
+        return res.status(200).json({
+            data: response
+        })
+    } catch (error) {
+        res.status(500).json(handleErrorMessage(error))
     }
-    const id: any = req.params["id"]
-    return res.status(200).json(await NationService.updateById(id, payload))
 }

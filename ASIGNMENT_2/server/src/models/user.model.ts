@@ -1,23 +1,26 @@
 import { roleEnum } from "@/common/common"
-import mongoose, { Schema } from "mongoose"
+import mongoose, { Document, Schema } from "mongoose"
 
-export interface IUser {
+export interface IUser extends Document {
     name: string,
     email: string,
     password: string
-    role: string
+    role: string,
+    refeshToken?: string
 }
 
-const userSchema = new Schema(
+const userSchema: Schema<IUser> = new Schema(
     {
         name: {
             type: String,
-            require: true
+            require: true,
+            trim: true
         },
         email: {
             type: String,
             unique: true,
-            require: true
+            require: true,
+            trim: true
         },
         password: {
             type: String,
@@ -29,6 +32,9 @@ const userSchema = new Schema(
             type: String,
             enum: roleEnum,
             default: roleEnum.USER
+        },
+        refeshToken: {
+            type: String
         }
     },
     {
@@ -37,5 +43,4 @@ const userSchema = new Schema(
 )
 
 
-
-export const Player = mongoose.model('users', userSchema)
+export const User = mongoose.model<IUser>('users', userSchema)

@@ -6,7 +6,7 @@ const nationRouter = express.Router();
 nationRouter.use(bodyParser.json());
 
 nationRouter
-    .get('/', NationController.getAllNation)
+    .get('/', NationController.getNationByOption)
     .post('/', NationController.createNation)
     .get('/:id', NationController.getNationById)
     .delete('/:id', NationController.deleteNationById)

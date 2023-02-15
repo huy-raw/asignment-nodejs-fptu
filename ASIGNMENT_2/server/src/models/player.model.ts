@@ -1,8 +1,8 @@
-import mongoose, { Schema, Types } from "mongoose"
+import mongoose, { Document, Schema, Types } from "mongoose"
 import { positionEnum } from '@/common/common';
 
 
-export interface IPlayer {
+export interface IPlayer extends Document {
     name: string,
     image: string,
     club: string,
@@ -17,25 +17,29 @@ const playerSchema = new Schema(
         name: {
             type: String,
             max: 255,
-            required: [true, "Name can not be blank"]
+            required: [true, "Name can not be blank"],
+            trim: true
         },
         image: {
-            type: String
+            type: String,
+            trim: true
         },
         club: {
             type: String,
             max: 255,
-            required: true
+            required: true,
+            trim: true
         },
-        posision: {
+        position: {
             type: String,
             enum: positionEnum,
-            required: true
+            required: true,
+            trim: true
         },
         goals: {
             type: Number,
             min: 0,
-            default: 0
+            default: 0,
         },
         isCaptain: {
             type: Boolean,
@@ -53,4 +57,4 @@ const playerSchema = new Schema(
 )
 
 
-export const Player = mongoose.model('players', playerSchema)
+export const Player = mongoose.model<IPlayer>('players', playerSchema)

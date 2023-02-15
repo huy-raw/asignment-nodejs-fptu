@@ -1,21 +1,47 @@
 import { IPlayer, Player } from "@/models/player.model";
+import { CreatePlayerRequest, QueryOption, UpdatePlayerRequest } from '../utils/request';
 
-export const findAll = async (): Promise<any> => {
+export const findAll = async () => {
     try {
         return await Player.find().populate({
             path: "nation"
         });
     } catch (error) {
-        console.log(error)
+        throw error
     }
 }
 
-export const create = async (payload: IPlayer): Promise<any> => {
+export const findByOption = async (option: QueryOption) => {
     try {
-        console.log(payload);
+        const count = await Player.count()
+        const currentPage: number = option.page
+        const filter = JSON.parse(option.filter)
+        const sort = JSON.parse(option.sort)
+
+        const queryResponse = await Player
+            .find(filter)
+            .skip((currentPage - 1) * option.limit)
+            .limit(option.limit)
+            .sort(sort)
+            .exec()
+
+        return {
+            totalItems: queryResponse.length,
+            data: queryResponse,
+            totalPages: Math.ceil(count / option.limit),
+            currentPage: currentPage,
+            nextPagae: currentPage + 1
+        }
+    } catch (error) {
+        throw error
+    }
+}
+
+export const create = async (payload: CreatePlayerRequest): Promise<any> => {
+    try {
         return await Player.create(payload);
     } catch (error) {
-        console.log(error)
+        throw error
     }
 }
 
@@ -23,7 +49,7 @@ export const findById = async (id: String): Promise<any> => {
     try {
         return await Player.findById({ _id: id }).populate("nation")
     } catch (error) {
-        console.log(error)
+        throw error
     }
 }
 
@@ -31,11 +57,11 @@ export const deleteById = async (id: String): Promise<any> => {
     try {
         return await Player.deleteOne({ _id: id });
     } catch (error) {
-        console.log(error);
+        throw error
     }
 }
 
-export const updateById = async (id: String, payload: IPlayer): Promise<any> => {
+export const updateById = async (id: String, payload: UpdatePlayerRequest): Promise<any> => {
     try {
         return await Player.where({ _id: id }).update({
             name: payload.name,
@@ -47,6 +73,6 @@ export const updateById = async (id: String, payload: IPlayer): Promise<any> => 
             nation: payload.nation
         })
     } catch (error) {
-        console.log(error);
+        throw error
     }
 }

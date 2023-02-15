@@ -1,8 +1,8 @@
 export enum positionEnum {
     GOALKEEPER = 'goalkeeper',
-    MIDFIELDERS = 'midfielders',
-    FORWARD = 'forwards',
-    DEFENDERS = 'defenders'
+    MIDFIELDERS = 'midfielder',
+    FORWARD = 'forward',
+    DEFENDERS = 'defender'
 }
 
 export enum roleEnum {
