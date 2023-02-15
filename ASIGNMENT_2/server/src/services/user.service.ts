@@ -1,6 +1,7 @@
 import { User, } from "@/models/user.model";
 import { LoginRequest, RegisterRequest } from "@/utils/request";
 import * as bcrypt from 'bcryptjs'
+import { decodeToken, generateToken } from '../utils/jwt';
 
 
 export const register = async (payload: RegisterRequest) => {
@@ -8,12 +9,15 @@ export const register = async (payload: RegisterRequest) => {
         const salt = await bcrypt.genSalt(10);
         const hasdPassword = await bcrypt.hash(payload.password, salt)
 
-        return await User.create({
+        const registerUser = await User.create({
             name: payload.name,
             email: payload.email,
             password: hasdPassword,
             role: payload.role
         })
+
+        return registerUser;
+
     } catch (error) {
         throw error
     }
@@ -25,12 +29,31 @@ export const login = async (payload: LoginRequest) => {
         if (!user) {
             return null
         }
-       
-        const checkPassword = await bcrypt.compare(payload.password, user?.password)
-        if (!checkPassword) {
-            return null
+
+        //check existed refeshtoken
+        if (!user.refeshToken) {
+            const payloadToken = {
+                id: user._id,
+                role: user.role
+            }
+            const refeshtoken = await generateToken(payloadToken, 60 * 60 * 24);
+            await User.findOne({ _id: user._id })
+                .update({ refeshToken: refeshtoken })
+        } else {
+            //check token expired
+            const checkExpiredToken = await decodeToken(user.refeshToken)
+
+            if (!checkExpiredToken) {
+                const payloadToken = {
+                    id: user._id,
+                    role: user.role
+                }
+                const refeshtoken = await generateToken(payloadToken, 60 * 60 * 24);
+                await User.findOne({ _id: user._id })
+                    .update({ refeshToken: refeshtoken })
+            }
         }
-        return user
+        return await User.findById({ _id: user._id })
     } catch (error) {
         throw error
     }

@@ -6,7 +6,7 @@ export interface IUser extends Document {
     email: string,
     password: string
     role: string,
-    refeshToken?: string
+    refeshToken: string
 }
 
 const userSchema: Schema<IUser> = new Schema(

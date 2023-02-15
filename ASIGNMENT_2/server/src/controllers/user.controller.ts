@@ -2,26 +2,43 @@ import { handleErrorMessage } from "@/utils/error";
 import { LoginRequest } from "@/utils/request";
 import { Request, Response } from "express";
 import * as UserService from 'services/user.service'
+import * as bcrypt from 'bcryptjs'
 import { RegisterRequest } from '../utils/request';
-
+import { generateToken } from '../utils/jwt';
 
 
 export const login = async (req: Request, res: Response) => {
     try {
-        const payload: LoginRequest = {
+        const loginPayload: LoginRequest = {
             email: req.body.email,
             password: req.body.password
         }
-        const login = await UserService.login(payload);
-
-        if (login == null) {
-            return res.status(401).json("Uncorrect email or password!!")
+        //check username
+        const user = await UserService.login(loginPayload);
+        if (!user) {
+            return res.status(422).json("Uncorrect email or password!!")
         }
-    
-        return res.status(200).json({
-            data: login,
-            message: "Login successfully"
-        })
+        //check password
+        const checkPassword = await bcrypt.compare(loginPayload.password, user?.password)
+        if (!checkPassword) {
+            return res.status(422).json("Uncorrect email or password!!")
+        }
+
+        const payload: any = {
+            id: user._id,
+            role: user.role
+        }
+
+        const accessToken: string = await generateToken(payload, 60 * 60);
+
+
+        return res.status(200)
+            .setHeader('AccessToken', 'Bearer ' + accessToken)
+            .setHeader('RefeshToken', user.refeshToken)
+            .json({
+                data: user,
+                message: "Login successfully"
+            })
 
     } catch (error) {
         return res.status(500).json(handleErrorMessage(error))
