@@ -1,0 +1,169 @@
+[{
+  "_id": {
+    "$oid": "63eca4157d60f21d1687d8a9"
+  },
+  "name": "Lionel Messi",
+  "image": "",
+  "club": "Paris Saint-Germain",
+  "position": "forward",
+  "goals": 0,
+  "isCaptain": false,
+  "nation": {
+    "$oid": "63ec9c5fe05171ad3bf3a48e"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1676452885486"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1676452885486"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63eca44a7d60f21d1687d8ad"
+  },
+  "name": "Cristiano Ronaldo",
+  "image": "",
+  "club": "Manchester United",
+  "position": "forward",
+  "goals": 0,
+  "isCaptain": false,
+  "nation": {
+    "$oid": "63ec9c8ae05171ad3bf3a49c"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1676452938530"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1676452938530"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63eca49d7d60f21d1687d8af"
+  },
+  "name": "Neymar Jr.",
+  "image": "",
+  "club": "Paris Saint-Germain",
+  "position": "forward",
+  "goals": 0,
+  "isCaptain": false,
+  "nation": {
+    "$oid": "63ec9c66e05171ad3bf3a490"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1676453021412"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1676453021412"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63eca4df7d60f21d1687d8b1"
+  },
+  "name": "Kevin De Bruyne",
+  "image": "",
+  "club": "Manchester City",
+  "position": "midfielder",
+  "goals": 0,
+  "isCaptain": false,
+  "nation": {
+    "$oid": "63ec9c96e05171ad3bf3a4a0"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1676453087554"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1676453087554"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63eca4fb7d60f21d1687d8b3"
+  },
+  "name": "Virgil van Dijk",
+  "image": "",
+  "club": "Liverpool",
+  "position": "defender",
+  "goals": 0,
+  "isCaptain": false,
+  "nation": {
+    "$oid": "63ec9c83e05171ad3bf3a49a"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1676453115833"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1676453115833"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63eca5237d60f21d1687d8b5"
+  },
+  "name": "Harry Kane",
+  "image": "",
+  "club": "Tottenham Hotspur",
+  "position": "forward",
+  "goals": 0,
+  "isCaptain": false,
+  "nation": {
+    "$oid": "63ec9c8fe05171ad3bf3a49e"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1676453155918"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1676453155918"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63ecdaf2a13d6414179d2083"
+  },
+  "name": "Harry Maguire",
+  "image": "",
+  "club": "Manchester United",
+  "position": "midfielder",
+  "goals": 0,
+  "isCaptain": true,
+  "nation": {
+    "$oid": "63ec9c8fe05171ad3bf3a49e"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1676466930427"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1676466930427"
+    }
+  },
+  "__v": 0
+}]
