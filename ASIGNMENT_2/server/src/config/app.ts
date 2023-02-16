@@ -3,7 +3,7 @@ import playerRouter from '@/routes/player.router';
 import userRouter from '@/routes/user.router';
 import express, { Express, Request, Response } from 'express';
 import * as path from "path";
-import cors from 'cors'
+import * as cors from 'cors'
 require('dotenv').config()
 
 export const app = () => {
@@ -11,7 +11,7 @@ export const app = () => {
     const app: Express = express();
     const port = process.env['PORT'] || 8080
 
-    app.use(cors());
+    app.use(cors.default({ origin: '*' }));
 
     //set up view engine
     app.set("views", path.join(__dirname, "../views"));
