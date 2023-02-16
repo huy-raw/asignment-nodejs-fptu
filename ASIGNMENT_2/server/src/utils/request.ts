@@ -2,8 +2,8 @@ export interface QueryOption {
     page: number,
     skip: number,
     limit: number,
-    sort: string,
-    filter: string
+    sort?: any | undefined,
+    filter?: any | undefined,
 }
 
 export interface LoginRequest {

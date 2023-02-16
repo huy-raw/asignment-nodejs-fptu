@@ -10,8 +10,8 @@ export const getNationByOption = async (req: Request, res: Response): Promise<an
             page: req.query["page"] || 1 as any,
             limit: req.query["limit"] || 5 as any,
             skip: req.query["skip"] || 0 as any,
-            sort: req.query["sort"] as any,
-            filter: req.query["filter"] || null as any,
+            sort: req.query["sort"] || [],
+            filter: req.query["filter"] || {}
         }
         const response = await NationService.findByOption(queryOption)
         return res.status(200).json({

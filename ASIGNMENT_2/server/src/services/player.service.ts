@@ -1,5 +1,6 @@
 import { IPlayer, Player } from "@/models/player.model";
 import { CreatePlayerRequest, QueryOption, UpdatePlayerRequest } from '../utils/request';
+import { checkExistUser } from './user.service';
 
 export const findAll = async () => {
     try {
@@ -15,8 +16,8 @@ export const findByOption = async (option: QueryOption) => {
     try {
         const count = await Player.count()
         const currentPage: number = option.page
-        const filter = JSON.parse(option.filter)
-        const sort = JSON.parse(option.sort)
+        const filter = JSON.parse(option.filter) 
+        const sort = JSON.parse(option.sort) 
 
         const queryResponse = await Player
             .find(filter)
@@ -30,16 +31,22 @@ export const findByOption = async (option: QueryOption) => {
             data: queryResponse,
             totalPages: Math.ceil(count / option.limit),
             currentPage: currentPage,
-            nextPagae: currentPage + 1
         }
     } catch (error) {
         throw error
     }
 }
+export const checkExitsPlayer = async (name: string) => {
+    try {
+        return await Player.findOne({ name: name }).exec()
+    } catch (error) {
 
+    }
+}
 export const create = async (payload: CreatePlayerRequest): Promise<any> => {
     try {
-        return await Player.create(payload);
+        const user = await Player.create(payload);
+        return user
     } catch (error) {
         throw error
     }
@@ -76,3 +83,4 @@ export const updateById = async (id: String, payload: UpdatePlayerRequest): Prom
         throw error
     }
 }
+

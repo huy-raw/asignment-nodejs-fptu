@@ -22,13 +22,11 @@ export const findByOption = async (option: QueryOption) => {
             .limit(option.limit)
             .sort(sort)
             .exec()
-
         return {
             totalItems: queryResponse.length,
             data: queryResponse,
             totalPages: Math.ceil(count / option.limit),
-            currentPage: currentPage,
-            nextPagae: currentPage + 1
+            currentPage: currentPage
         }
     } catch (error) {
         throw error

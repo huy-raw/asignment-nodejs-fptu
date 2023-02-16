@@ -15,7 +15,12 @@ export const createPlayer = async (req: Request, res: Response) => {
             goals: req.body.goals,
             isCaptain: req.body.isCaptain
         }
-        console.log("controller===>", payload);
+        //check exist player
+        const checkExistPlayer = await PlayerService.checkExitsPlayer(payload.name);
+        if (checkExistPlayer) {
+            res.status(404).json("User existed!!")
+        }
+
         const response = await PlayerService.create(payload)
         return res.status(200).json({
             data: response
