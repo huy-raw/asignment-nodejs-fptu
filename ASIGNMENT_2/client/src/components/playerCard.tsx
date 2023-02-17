@@ -1,5 +1,4 @@
 import { useMutation } from "react-query";
-import PlayerService from "../services/playerService";
 
 export const PlayerCard = (props: any) => {
     const { data } = props;
