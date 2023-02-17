@@ -4,8 +4,7 @@ import { axiosClient } from "../utils/axiosClient";
 const ROUTE = 'players'
 const findAll = async () => {
     try {
-        const response = await axiosClient.get(`/${ROUTE}/?filter={}&sort=[]&limit=20`)
-        console.log(response.data);
+        const response = await axiosClient.get(`/${ROUTE}/`)
         return response.data
     } catch (error) {
         throw error
@@ -52,12 +51,12 @@ const deletePlayer = async (_id: string) => {
 
 
 
-const PlayerService = {
+const playerService = {
     findAll,
     findById,
     updatePlayer,
-    deletePlayer, 
+    deletePlayer,
     createPlayer
 }
 
-export default PlayerService
+export default playerService
