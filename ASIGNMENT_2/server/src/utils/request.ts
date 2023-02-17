@@ -46,5 +46,6 @@ export interface CreateNationRequest {
 
 export interface UpdateNationRequest {
     name?: string
-    description?: string
+    description?: string,
+    plagImg?: string
 }

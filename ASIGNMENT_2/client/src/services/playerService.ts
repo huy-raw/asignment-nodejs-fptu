@@ -30,18 +30,18 @@ const createPlayer = async (payload: any) => {
     }
 }
 
-const updatePlayer = async (payload: any, _id: string) => {
+const updatePlayer = async (payload: any, id: string) => {
     try {
-        const response = await axiosClient.patch(`/${ROUTE}/${_id}`, payload)
+        const response = await axiosClient.patch(`/${ROUTE}/${id}`, payload)
         return response.data
     } catch (error) {
         throw error
     }
 }
 
-const deletePlayer = async (_id: string) => {
+const deletePlayer = async (id: string) => {
     try {
-        const response = await axiosClient.delete(`/${ROUTE}/${_id}`)
+        const response = await axiosClient.delete(`/${ROUTE}/${id}`)
         return response.data
     } catch (error) {
         throw error

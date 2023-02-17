@@ -45,7 +45,13 @@ export interface IResponsePaging<T> {
     }
 }
 
-export enum EAction {
+export enum Action {
     UPDATE = 'UPDATE',
     CREATE = 'CREATE'
+}
+
+export enum TypeData {
+    PLAYER = "player",
+    NATION = "nation",
+    USER = "user"
 }

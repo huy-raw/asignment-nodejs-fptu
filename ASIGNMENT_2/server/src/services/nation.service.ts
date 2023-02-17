@@ -61,7 +61,8 @@ export const updateById = async (id: String, payload: UpdateNationRequest) => {
     try {
         return Nation.where({ _id: id }).update({
             name: payload.name,
-            description: payload.description
+            description: payload.description,
+            plagImg: payload.plagImg
         })
     } catch (error) {
         throw error
