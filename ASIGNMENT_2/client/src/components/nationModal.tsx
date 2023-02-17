@@ -7,11 +7,11 @@ import { Action } from '../utils/types';
 export const NationModal = (props: any) => {
     const queryClient = useQueryClient()
     const data = props.data ?? null
-    const type = props.type 
+    const type = props.type
     const handleCloseModal = () => {
-        if (type === Action.CREATE){
+        if (type === Action.CREATE) {
             props.handleCloseModal()
-        } 
+        }
         if (type === Action.UPDATE) {
             props.handleCloseModal()
         }
@@ -48,7 +48,7 @@ export const NationModal = (props: any) => {
                         <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
                             <div className="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
                                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-                                   NATION MODAL
+                                    NATION MODAL
                                 </h3>
                                 <button onClick={handleCloseModal} type="button" className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="staticModal">
                                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
@@ -59,24 +59,30 @@ export const NationModal = (props: any) => {
                                     <div className="mb-6">
                                         <label htmlFor="name" className="block mb-2 text-sm font-medium text-black">Nation name</label>
                                         <input
+                                            required
                                             value={formik.values.name}
-                                            onChange={formik.handleChange} name="name" type="text" id="name" className="text-sm rounded-lg w-full p-2.5 dark:bg-gray-700 dark:border-green-500" />
+                                            onChange={formik.handleChange} name="name" type="text" id="name" 
+                                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"/>
                                     </div>
                                     <div className="mb-6">
                                         <label htmlFor="description" className="block mb-2 text-sm font-medium text-black">Description</label>
                                         <input
+                                            required
                                             value={formik.values.description}
                                             onChange={formik.handleChange} name="description"
-                                            type="text" id="description" className=" text-sm rounded-lg w-full p-2.5 dark:bg-gray-700 dark:border-green-500" />
+                                            type="text" id="description" 
+                                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" />
                                     </div>
                                     <div className="mb-6">
                                         <label htmlFor="plagImg" className="block mb-2 text-sm font-medium text-black">Image</label>
                                         <input
+                                            required
                                             value={formik.values.plagImg}
                                             onChange={formik.handleChange}
                                             name="plagImg"
                                             id="plagImg"
-                                            type="text" className="text-sm rounded-lg w-full p-2.5 dark:bg-gray-700 dark:border-green-500" />
+                                            type="text"
+                                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" />
                                     </div>
                                 </div>
                             </div>
