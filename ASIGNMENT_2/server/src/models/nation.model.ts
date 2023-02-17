@@ -1,8 +1,9 @@
 import mongoose, { Document, Schema } from "mongoose"
 
-export interface INation extends Document{
+export interface INation extends Document {
     name: string;
     description: string;
+    plagImg: string;
 }
 
 const nationSchema: Schema<INation> = new Schema(
@@ -16,11 +17,15 @@ const nationSchema: Schema<INation> = new Schema(
         description: {
             type: String,
             trim: true
+        },
+        plagImg: {
+            type: String,
+            require: true,
+            trim: true
         }
     },
     {
         timestamps: true,
-        autoIndex: true
     }
 )
 

@@ -1,8 +1,7 @@
-import { axiosClient } from '../utils/axiosClient';
-import { INation } from '../utils/types';
+import { axiosClient } from "../utils/axiosClient";
 
-const ROUTE = 'nations';
 
+const ROUTE = 'players'
 const findAll = async () => {
     try {
         const response = await axiosClient.get(`/${ROUTE}/?filter={}&sort=[]&limit=20`)
@@ -13,6 +12,7 @@ const findAll = async () => {
     }
 }
 
+
 const findById = async (_id: string) => {
     try {
         const response = await axiosClient.get(`/${ROUTE}/${_id}`)
@@ -22,16 +22,16 @@ const findById = async (_id: string) => {
     }
 }
 
-const createNation = async (payload?: INation) => {
+const createPlayer = async (payload: any) => {
     try {
-        const response = await axiosClient.post(`/${ROUTE}`, payload)
+        const response = await axiosClient.post(`/${ROUTE}/`, payload)
         return response.data
     } catch (error) {
         throw error
     }
 }
 
-const updateNation = async (payload?: INation, _id?: string) => {
+const updatePlayer = async (payload: any, _id: string) => {
     try {
         const response = await axiosClient.patch(`/${ROUTE}/${_id}`, payload)
         return response.data
@@ -40,7 +40,7 @@ const updateNation = async (payload?: INation, _id?: string) => {
     }
 }
 
-const deleteNation = async (_id: string) => {
+const deletePlayer = async (_id: string) => {
     try {
         const response = await axiosClient.delete(`/${ROUTE}/${_id}`)
         return response.data
@@ -49,12 +49,15 @@ const deleteNation = async (_id: string) => {
     }
 }
 
-const nationService = {
+
+
+
+const PlayerService = {
     findAll,
     findById,
-    createNation,
-    updateNation,
-    deleteNation
+    updatePlayer,
+    deletePlayer, 
+    createPlayer
 }
 
-export default nationService
+export default PlayerService

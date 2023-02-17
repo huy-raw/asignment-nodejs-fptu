@@ -30,20 +30,20 @@ export const createPlayer = async (req: Request, res: Response) => {
     }
 }
 
-// export const getAllPlayer = async (_req: Request, res: Response): Promise<any> => {
-//     try {
-//         const response = await PlayerService.findAll();
+export const getAllPlayer = async (_req: Request, res: Response): Promise<any> => {
+    try {
+        const response = await PlayerService.findAll();
 
-//         if (!response) {
-//             return res.status(404).json("No content")
-//         }
-//         return res.status(200).json({
-//             data: response
-//         })
-//     } catch (error) {
-//         res.status(500).json(handleErrorMessage(error))
-//     }
-// }
+        if (!response) {
+            return res.status(404).json("No content")
+        }
+        return res.status(200).json({
+            data: response
+        })
+    } catch (error) {
+        res.status(500).json(handleErrorMessage(error))
+    }
+}
 
 export const getPlayerByOption = async (req: Request, res: Response): Promise<any> => {
     try {

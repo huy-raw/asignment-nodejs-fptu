@@ -40,7 +40,8 @@ export interface UpdatePlayerRequest {
 
 export interface CreateNationRequest {
     name: string
-    description: string
+    description: string,
+    plagImg: string
 }
 
 export interface UpdateNationRequest {

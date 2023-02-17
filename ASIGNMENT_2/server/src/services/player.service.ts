@@ -1,6 +1,5 @@
 import { IPlayer, Player } from "@/models/player.model";
 import { CreatePlayerRequest, QueryOption, UpdatePlayerRequest } from '../utils/request';
-import { checkExistUser } from './user.service';
 
 export const findAll = async () => {
     try {
@@ -16,8 +15,8 @@ export const findByOption = async (option: QueryOption) => {
     try {
         const count = await Player.count()
         const currentPage: number = option.page
-        const filter = JSON.parse(option.filter) 
-        const sort = JSON.parse(option.sort) 
+        const filter = JSON.parse(option.filter)
+        const sort = JSON.parse(option.sort)
 
         const queryResponse = await Player
             .find(filter)

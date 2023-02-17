@@ -7,7 +7,7 @@ playerRouter.use(bodyParser.json())
 
 playerRouter
     .post('/', PlayerController.createPlayer)
-    .get('/', PlayerController.getPlayerByOption)    
+    .get('/', PlayerController.getAllPlayer)    
     .get('/:id', PlayerController.getPlayerById)
     .patch('/:id', PlayerController.updateById)
     .delete('/:id', PlayerController.deleteById)

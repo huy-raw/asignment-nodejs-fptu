@@ -5,7 +5,7 @@ export const Home: React.FC = () => {
 
     return (
         <>
-            HomePage
+           <div>Tính năng sẽ được cập nhật</div>
         </>
     )
 }

@@ -1,75 +1,30 @@
-import React from "react"
-import { IPlayerCard, PlayerCard } from "../components/playerCard"
+import React, { useState } from "react"
+import { useQuery } from "react-query";
+import { PlayerCard } from "../components/playerCard"
+import { Spiner } from "../components/spiner";
+import PlayerService from "../services/playerService";
+
 
 export const Player: React.FC = () => {
-    const data: IPlayerCard = {
-        id: '123',
-        name: 'Tèo',
-        club: 'MU',
-        goals: 5,
-        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScpngv769D7wzoD7JTvu5o8HbSGDIbjtVefA&usqp=CAU',
-        isCaptain: false,
-        nationId: '1',
-        position: 'CDM'
+    const { data: dataPlayer, isFetching: loadingPlayer} = useQuery('nations', PlayerService.findAll);
+    if (loadingPlayer) {
+        return <Spiner />
     }
+
+    const players: any = dataPlayer.data?.data
+   
+
     return (
         <>
-            <div className="grid grid-cols-4 gap-6 mx-20">
-                <div>
-                    <PlayerCard
-                        id={""}
-                        name={data.name}
-                        img={data.img}
-                        position={data.position}
-                        club={data.club}
-                        goals={0}
-                        isCaptain={false}
-                        nationId={data.nationId} />
-                </div>
-                <div>
-                    <PlayerCard
-                        id={""}
-                        name={data.name}
-                        img={data.img}
-                        position={data.position}
-                        club={data.club}
-                        goals={0}
-                        isCaptain={false}
-                        nationId={data.nationId} />
-                </div>
-                  <div>
-                    <PlayerCard
-                        id={""}
-                        name={data.name}
-                        img={data.img}
-                        position={data.position}
-                        club={data.club}
-                        goals={0}
-                        isCaptain={false}
-                        nationId={data.nationId} />
-                </div>
-                <div>
-                    <PlayerCard
-                        id={""}
-                        name={data.name}
-                        img={data.img}
-                        position={data.position}
-                        club={data.club}
-                        goals={0}
-                        isCaptain={false}
-                        nationId={data.nationId} />
-                </div>
-                <div>
-                    <PlayerCard
-                        id={""}
-                        name={data.name}
-                        img={data.img}
-                        position={data.position}
-                        club={data.club}
-                        goals={0}
-                        isCaptain={false}
-                        nationId={data.nationId} />
-                </div>  
+            <div className="px-4 py-3 sm:flex sm:flex-row sm:px-6">
+                <button type="button" className="inline-flex w-full justify-center rounded-md border border-transparent bg-green-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm">Create</button>
+            </div>
+            <div className="grid lg:grid-cols-4 sm:grid-cols-2 gap-6 mx-20 ">
+                {
+                    players.map((player: any, index: any) => {
+                        return <PlayerCard key={index} data={player} handleOpenModal={null} />
+                    })
+                }
             </div>
         </>
     )

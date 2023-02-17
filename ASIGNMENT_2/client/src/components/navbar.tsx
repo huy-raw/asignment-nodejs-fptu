@@ -5,8 +5,8 @@ export const NavBar: React.FC = () => {
         <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
             <div className="container flex flex-wrap items-center justify-between mx-auto">
                 <a href="/" className="flex items-center">
-                    <img src="https://vitejs.dev/logo.svg" className="h-6 mr-3 sm:h-9 hover:scale-150 hover:ease-in-out" alt="Flowbite Logo" />
-                    <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">ViteZone</span>
+                    <img src="https://vitejs.dev/logo.svg" className="h-6 mr-3 sm:h-9 hover:scale-125 hover:ease-in-out" alt="Flowbite Logo" />
+                    <span className="self-center text-2xl font-bold whitespace-nowrap dark:text-white">ViteZone</span>
                 </a>
                 <div className="flex md:order-2">
                     <button type="button" data-collapse-toggle="navbar-search" aria-controls="navbar-search" aria-expanded="false" className="md:hidden text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 mr-1" >

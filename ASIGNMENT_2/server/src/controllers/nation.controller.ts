@@ -21,12 +21,28 @@ export const getNationByOption = async (req: Request, res: Response): Promise<an
         res.status(500).json(handleErrorMessage(error))
     }
 }
+export const getAllNation = async (req: Request, res: Response): Promise<any> => {
+    try {
+        const response = await NationService.findAll();
+
+        if (!response) {
+            return res.status(404).json("No content")
+        }
+        return res.status(200).json({
+            data: response
+        })
+    } catch (error) {
+        res.status(500).json(handleErrorMessage(error))
+    }
+}
 
 export const createNation = async (req: Request, res: Response): Promise<any> => {
     try {
         const payload: CreateNationRequest = {
             name: req.body.name,
-            description: req.body.description
+            description: req.body.description,
+            plagImg: req.body.plagImg
+
         }
         const response = await NationService.create(payload)
         return res.status(200).json({
