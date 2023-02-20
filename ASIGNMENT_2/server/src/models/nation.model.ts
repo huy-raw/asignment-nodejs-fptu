@@ -3,7 +3,7 @@ import mongoose, { Document, Schema } from "mongoose"
 export interface INation extends Document {
     name: string;
     description: string;
-    plagImg: string;
+    image: string;
 }
 
 const nationSchema: Schema<INation> = new Schema(
@@ -18,7 +18,7 @@ const nationSchema: Schema<INation> = new Schema(
             type: String,
             trim: true
         },
-        plagImg: {
+        image: {
             type: String,
             require: true,
             trim: true

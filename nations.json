@@ -5,7 +5,7 @@
     },
     "name": "Vietnam",
     "description": "Trash team in Asian",
-    "plagImg": "https://investone-law.com/wp-content/uploads/2019/06/quoc-ky-viet-nam.jpg",
+    "image": "https://investone-law.com/wp-content/uploads/2019/06/quoc-ky-viet-nam.jpg",
     "createdAt": {
       "$date": {
         "$numberLong": "1676450618447"
@@ -24,7 +24,7 @@
     },
     "name": "Argentina",
     "description": "The Argentina national football team is one of the most successful national teams in the world, having won the FIFA World Cup twice and the Copa América a record 15 times.",
-    "plagImg": "https://investone-law.com/wp-content/uploads/2019/06/quoc-ky-viet-nam.jpg",
+    "image": "https://investone-law.com/wp-content/uploads/2019/06/quoc-ky-viet-nam.jpg",
     "createdAt": {
       "$date": {
         "$numberLong": "1676450911519"
@@ -43,7 +43,7 @@
     },
     "name": "Brazil",
     "description": "The Brazil national football team is the most successful team in the FIFA World Cup, having won the tournament a record five times. They have also won the Copa América nine times.",
-    "plagImg": "https://investone-law.com/wp-content/uploads/2019/06/quoc-ky-viet-nam.jpg",
+    "image": "https://investone-law.com/wp-content/uploads/2019/06/quoc-ky-viet-nam.jpg",
     "createdAt": {
       "$date": {
         "$numberLong": "1676450918871"
@@ -62,7 +62,7 @@
     },
     "name": "Germany",
     "description": "The Germany national football team is one of the most successful teams in international football, having won the FIFA World Cup four times and the UEFA European Championship three times.",
-    "plagImg": "https://investone-law.com/wp-content/uploads/2019/06/quoc-ky-viet-nam.jpg",
+    "image": "https://investone-law.com/wp-content/uploads/2019/06/quoc-ky-viet-nam.jpg",
     "createdAt": {
       "$date": {
         "$numberLong": "1676450925264"
@@ -81,7 +81,7 @@
     },
     "name": "France",
     "description": "The France national football team has won two FIFA World Cup titles and two UEFA European Championships, and is widely regarded as one of the most talented teams in the world.",
-    "plagImg": "https://investone-law.com/wp-content/uploads/2019/06/quoc-ky-viet-nam.jpg",
+    "image": "https://investone-law.com/wp-content/uploads/2019/06/quoc-ky-viet-nam.jpg",
     "createdAt": {
       "$date": {
         "$numberLong": "1676450930933"
@@ -100,7 +100,7 @@
     },
     "name": "Spain",
     "description": "The Spain national football team has won one FIFA World Cup and three UEFA European Championships, and is known for its possession-based playing style.",
-    "plagImg": "https://investone-law.com/wp-content/uploads/2019/06/quoc-ky-viet-nam.jpg",
+    "image": "https://investone-law.com/wp-content/uploads/2019/06/quoc-ky-viet-nam.jpg",
     "createdAt": {
       "$date": {
         "$numberLong": "1676450936513"
@@ -119,7 +119,7 @@
     },
     "name": "Italy",
     "description": "The Italy national football team has won four FIFA World Cup titles and one UEFA European Championship, and is known for its defensive playing style.",
-    "plagImg": "https://investone-law.com/wp-content/uploads/2019/06/quoc-ky-viet-nam.jpg",
+    "image": "https://investone-law.com/wp-content/uploads/2019/06/quoc-ky-viet-nam.jpg",
     "createdAt": {
       "$date": {
         "$numberLong": "1676450941541"
@@ -138,7 +138,7 @@
     },
     "name": "Netherlands",
     "description": "The Netherlands national football team has reached three FIFA World Cup finals and one UEFA European Championship final, and is known for its attacking playing style.",
-    "plagImg": "https://investone-law.com/wp-content/uploads/2019/06/quoc-ky-viet-nam.jpg",
+    "image": "https://investone-law.com/wp-content/uploads/2019/06/quoc-ky-viet-nam.jpg",
     "createdAt": {
       "$date": {
         "$numberLong": "1676450947947"
@@ -157,7 +157,7 @@
     },
     "name": "Portugal",
     "description": "The Portugal national football team has won one UEFA European Championship and one UEFA Nations League title, and is led by one of the greatest players of all time, Cristiano Ronaldo.",
-    "plagImg": "https://investone-law.com/wp-content/uploads/2019/06/quoc-ky-viet-nam.jpg",
+    "image": "https://investone-law.com/wp-content/uploads/2019/06/quoc-ky-viet-nam.jpg",
     "createdAt": {
       "$date": {
         "$numberLong": "1676450954041"
@@ -176,7 +176,7 @@
     },
     "name": "England",
     "description": "The England national football team won the FIFA World Cup in 1966 and has since reached several semifinals in major tournaments. They are known for their passionate fans and the historic rivalry with Germany.",
-    "plagImg": "https://investone-law.com/wp-content/uploads/2019/06/quoc-ky-viet-nam.jpg",
+    "image": "https://investone-law.com/wp-content/uploads/2019/06/quoc-ky-viet-nam.jpg",
     "createdAt": {
       "$date": {
         "$numberLong": "1676450959696"
@@ -195,7 +195,7 @@
     },
     "name": "Belgium",
     "description": "The Belgium national football team is currently one of the strongest teams in the world, having reached the semifinals of the FIFA World Cup in 2018 and finished third. They are known for their talented players, such as Kevin De Bruyne and Romelu Lukaku.",
-    "plagImg": "https://investone-law.com/wp-content/uploads/2019/06/quoc-ky-viet-nam.jpg",
+    "image": "https://investone-law.com/wp-content/uploads/2019/06/quoc-ky-viet-nam.jpg",
     "createdAt": {
       "$date": {
         "$numberLong": "1676450966193"
@@ -214,7 +214,7 @@
     },
     "name": "Uruguay",
     "description": "The Uruguay national football team is one of the most successful teams in the history of the FIFA World Cup, having won the tournament twice and finished fourth on three other occasions. They are known for their fighting spirit and never-give-up attitude.",
-    "plagImg": "https://investone-law.com/wp-content/uploads/2019/06/quoc-ky-viet-nam.jpg",
+    "image": "https://investone-law.com/wp-content/uploads/2019/06/quoc-ky-viet-nam.jpg",
     "createdAt": {
       "$date": {
         "$numberLong": "1676450972022"
@@ -233,7 +233,7 @@
     },
     "name": "Mexico",
     "description": "The Mexico national football team has a strong footballing culture and is known for its passionate fans. They have reached the quarterfinals of the FIFA World Cup on several occasions and have won the CONCACAF Gold Cup a record 11 times.",
-    "plagImg": "https://investone-law.com/wp-content/uploads/2019/06/quoc-ky-viet-nam.jpg",
+    "image": "https://investone-law.com/wp-content/uploads/2019/06/quoc-ky-viet-nam.jpg",
     "createdAt": {
       "$date": {
         "$numberLong": "1676450979482"
@@ -252,7 +252,7 @@
     },
     "name": "Chile",
     "description": "The Chile national football team is known for its high-pressing and aggressive playing style. They have won two consecutive Copa América titles in 2015 and 2016, and reached the FIFA Confederations Cup final in 2017.",
-    "plagImg": "https://investone-law.com/wp-content/uploads/2019/06/quoc-ky-viet-nam.jpg",
+    "image": "https://investone-law.com/wp-content/uploads/2019/06/quoc-ky-viet-nam.jpg",
     "createdAt": {
       "$date": {
         "$numberLong": "1676450984734"
@@ -271,7 +271,7 @@
     },
     "name": "Colombia",
     "description": "The Colombia national football team is known for its talented players, such as James Rodríguez",
-    "plagImg": "https://investone-law.com/wp-content/uploads/2019/06/quoc-ky-viet-nam.jpg",
+    "image": "https://investone-law.com/wp-content/uploads/2019/06/quoc-ky-viet-nam.jpg",
     "createdAt": {
       "$date": {
         "$numberLong": "1676450991779"

@@ -9,11 +9,11 @@ export const ConfirmModal = (props: any) => {
         props.handleCloseModal()
     }
     const queryClient = useQueryClient()
-    const id = props.id
-    const typeData = props.type
+    const id = props?.id
+    const typeData = props?.type
     const handleDelete = () => {
         if(typeData=== TypeData.NATION){
-            nationService.deleteNation(id).then(() => {
+            nationService.deleteNation(id). then(() => {
                 queryClient.invalidateQueries('getListNations')
                 handleCloseModal()
             })

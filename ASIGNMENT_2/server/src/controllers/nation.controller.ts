@@ -41,7 +41,7 @@ export const createNation = async (req: Request, res: Response): Promise<any> =>
         const payload: CreateNationRequest = {
             name: req.body.name,
             description: req.body.description,
-            plagImg: req.body.plagImg
+            image: req.body.image
         }
         const response = await NationService.create(payload)
         return res.status(200).json({
@@ -79,7 +79,7 @@ export const updateNationById = async (req: Request, res: Response): Promise<any
         const payload: UpdateNationRequest = {
             name: req.body?.name,
             description: req.body?.description,
-            plagImg: req.body?.plagImg
+            image: req.body?.image
         }
         const id: any = req.params["id"]
         const response = await NationService.updateById(id, payload)
