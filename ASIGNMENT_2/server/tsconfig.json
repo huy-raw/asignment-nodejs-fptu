@@ -36,7 +36,8 @@
         "noImplicitThis": true, /* Enable error reporting when `this` is given the type `any`. */
         "useUnknownInCatchVariables": true, /* Type catch clause variables as 'unknown' instead of 'any'. */
         "alwaysStrict": true, /* Ensure 'use strict' is always emitted. */
-        "exactOptionalPropertyTypes": true, /* Interpret optional property types as written, rather than adding 'undefined'. */        "noFallthroughCasesInSwitch": true, /* Enable error reporting for fallthrough cases in switch statements. */
+        "exactOptionalPropertyTypes": true, /* Interpret optional property types as written, rather than adding 'undefined'. */        
+        "noFallthroughCasesInSwitch": true, /* Enable error reporting for fallthrough cases in switch statements. */
         "noUncheckedIndexedAccess": true, /* Include 'undefined' in index signature results */
         "noImplicitOverride": true, /* Ensure overriding members in derived classes are marked with an override modifier. */
         "noPropertyAccessFromIndexSignature": true, /* Enforces using indexed accessors for keys declared using an indexed type */

@@ -6,8 +6,7 @@ const userRouter = express.Router();
 userRouter.use(bodyParser.json());
 
 userRouter
-    .post('/login', UserController.login)
-    .post('/register', UserController.register)
     .get('/', UserController.getAllUser)
+
 
 export default userRouter

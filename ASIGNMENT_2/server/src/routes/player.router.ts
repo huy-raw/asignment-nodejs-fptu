@@ -1,16 +1,17 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import * as PlayerController from 'controllers/player.controller'
+import { authMiddleware } from '@/middlewares/authentication'
 
 const playerRouter = express.Router()
 playerRouter.use(bodyParser.json())
 
 playerRouter
-    .post('/', PlayerController.createPlayer)
-    .get('/', PlayerController.getAllPlayer)    
+    .post('/', authMiddleware, PlayerController.createPlayer)
+    .get('/', PlayerController.getAllPlayer)
     .get('/:id', PlayerController.getPlayerById)
-    .patch('/:id', PlayerController.updateById)
-    .delete('/:id', PlayerController.deleteById)
-    .put('/:id', PlayerController.updateById)
+    .patch('/:id', authMiddleware, PlayerController.updateById)
+    .delete('/:id', authMiddleware, PlayerController.deleteById)
+    .put('/:id', authMiddleware, PlayerController.updateById)
 
 export default playerRouter

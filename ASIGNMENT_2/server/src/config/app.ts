@@ -4,6 +4,7 @@ import userRouter from '@/routes/user.router';
 import express, { Express, Request, Response } from 'express';
 import * as path from "path";
 import * as cors from 'cors'
+import authRouter from '@/routes/auth.router';
 require('dotenv').config()
 
 export const app = () => {
@@ -34,6 +35,7 @@ export const app = () => {
     app.use('/nations', nationRouter)
     app.use('/players', playerRouter)
     app.use('/users', userRouter)
+    app.use('/auth', authRouter)
 
     app.use(express.json())
     app.use(express.urlencoded({ extended: true }))
