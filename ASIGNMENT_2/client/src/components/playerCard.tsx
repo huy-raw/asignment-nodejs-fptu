@@ -24,11 +24,11 @@ export const PlayerCard = (props: any) => {
     }
 
     return (
-        <>
-            <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                <div className="pb-5 mt-5 m-auto   flex justify-center">
+        <a href="#">
+            <div className="max-w-sm bg-white border border-gray-200 rounded-2xl shadow dark:bg-gray-800 dark:border-gray-700">
+                <div className="m-auto flex justify-center">
                     <img
-                        className="rounded-2xl h-60 w-64"
+                        className=" object-fill rounded-2xl"
                         src={data.image || `https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg`}
                         alt="avatar"
                     />
@@ -47,6 +47,6 @@ export const PlayerCard = (props: any) => {
                     </div>
                 </div>
             </div>
-        </>
+        </a>
     )
 }

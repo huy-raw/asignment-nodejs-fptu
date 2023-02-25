@@ -1,8 +1,30 @@
-import { useFormik } from 'formik';
+import { FormikErrors, useFormik } from 'formik';
+import { isEmpty } from 'lodash';
 import { useQueryClient } from 'react-query';
 import nationService from '../services/nationService';
 import { Action } from '../utils/types';
 
+
+interface FormValues {
+    name: string,
+    description: string,
+    image: string
+}
+
+const validate = (values: FormValues) => {
+    const errors: FormikErrors<FormValues> = {}
+    if (isEmpty(values.name)) {
+        errors.name = "Nation name is requied"
+    }
+    if (isEmpty(values.description)) {
+        errors.description = "Description is requied"
+    }
+    if (isEmpty(values.image)) {
+        errors.image = "Image is requied"
+    }
+
+    return errors
+}
 
 export const NationModal = (props: any) => {
     const queryClient = useQueryClient()
@@ -21,7 +43,7 @@ export const NationModal = (props: any) => {
         initialValues: {
             name: data?.name || "",
             description: data?.description || "",
-            plagImg: data?.plagImg || ""
+            image: data?.image || ""
         },
         onSubmit: () => {
             if (type === Action.CREATE) {
@@ -36,7 +58,8 @@ export const NationModal = (props: any) => {
                     handleCloseModal()
                 })
             }
-        }
+        },
+        validate
     })
 
     return (
@@ -61,34 +84,40 @@ export const NationModal = (props: any) => {
                                         <input
                                             required
                                             value={formik.values.name}
-                                            onChange={formik.handleChange} name="name" type="text" id="name" 
-                                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"/>
+                                            onBlur={formik.handleBlur}
+                                            onChange={formik.handleChange} name="name" type="text" id="name"
+                                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" />
+                                        {formik.errors.name && formik.touched.name && <span className="text-tiny text-red-500">{formik.errors.name}</span>}
                                     </div>
                                     <div className="mb-6">
                                         <label htmlFor="description" className="block mb-2 text-sm font-medium text-black">Description</label>
                                         <input
                                             required
                                             value={formik.values.description}
+                                            onBlur={formik.handleBlur}
                                             onChange={formik.handleChange} name="description"
-                                            type="text" id="description" 
-                                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" />
+                                            type="text" id="description"
+                                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " />
+                                        {formik.errors.description && formik.touched.description && <span className="text-tiny  text-red-500">{formik.errors.description}</span>}
                                     </div>
                                     <div className="mb-6">
                                         <label htmlFor="plagImg" className="block mb-2 text-sm font-medium text-black">Image</label>
                                         <input
                                             required
-                                            value={formik.values.plagImg}
+                                            value={formik.values.image}
                                             onChange={formik.handleChange}
-                                            name="plagImg"
-                                            id="plagImg"
+                                            onBlur={formik.handleBlur}
+                                            name="image"
+                                            id="image"
                                             type="text"
-                                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" />
+                                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" />
+                                        {formik.errors.image && formik.touched.image && <span className="text-tiny text-red-500">{formik.errors.image}</span>}
                                     </div>
                                 </div>
                             </div>
                             <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                                <button type="submit" className="mt-3 inline-flex w-full justify-center rounded-md border border-blue-300 bg-blue-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" >Save</button>
-                                <button onClick={handleCloseModal} type="button" className="mt-3 inline-flex w-full justify-center rounded-md border border-blue-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Cancel</button>
+                                <button disabled={isEmpty(formik.values.description) || isEmpty(formik.values.name) || isEmpty(formik.values.image)} type="submit" className="mt-3 inline-flex w-full justify-center rounded-md border border-blue-300 bg-blue-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm disabled:bg-slate-400" >Save</button>
+                                <button onClick={handleCloseModal} type="button" className="mt-3 inline-flex w-full justify-center rounded-md border border-blue-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2  sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Cancel</button>
                             </div>
                         </div>
                     </form>

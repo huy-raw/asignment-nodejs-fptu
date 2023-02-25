@@ -10,7 +10,7 @@ const findAll = async () => {
     } catch (error) {
         throw error
     }
-}   
+}
 
 const findById = async (id: string) => {
     try {
