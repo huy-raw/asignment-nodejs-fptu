@@ -18,7 +18,7 @@ export const createPlayer = async (req: Request, res: Response) => {
         //check exist player
         const checkExistPlayer = await PlayerService.checkExitsPlayer(payload.name);
         if (checkExistPlayer) {
-            res.status(404).json("User existed!!")
+            res.status(403).json(`Player ${payload.name} existed`)
         }
 
         const response = await PlayerService.create(payload)
@@ -26,7 +26,7 @@ export const createPlayer = async (req: Request, res: Response) => {
             data: response
         })
     } catch (error) {
-        res.status(500).json(handleErrorMessage(error))
+        res.status(404).json(handleErrorMessage(error))
     }
 }
 
@@ -35,13 +35,13 @@ export const getAllPlayer = async (_req: Request, res: Response): Promise<any> =
         const response = await PlayerService.findAll();
 
         if (!response) {
-            return res.status(404).json("No content")
+            return res.status(401).json("No content")
         }
         return res.status(200).json({
             data: response
         })
     } catch (error) {
-        res.status(500).json(handleErrorMessage(error))
+        res.status(404).json(handleErrorMessage(error))
     }
 }
 
@@ -59,7 +59,7 @@ export const getPlayerByOption = async (req: Request, res: Response): Promise<an
             data: response
         })
     } catch (error) {
-        res.status(500).json(handleErrorMessage(error))
+        res.status(404).json(handleErrorMessage(error))
     }
 }
 
@@ -74,7 +74,7 @@ export const getPlayerById = async (req: Request, res: Response): Promise<any> =
             data: response
         })
     } catch (error) {
-        res.status(500).json(handleErrorMessage(error))
+        res.status(404).json(handleErrorMessage(error))
     }
 }
 
@@ -86,7 +86,7 @@ export const deleteById = async (req: Request, res: Response): Promise<any> => {
             data: response
         })
     } catch (error) {
-        res.status(500).json(handleErrorMessage(error))
+        res.status(404).json(handleErrorMessage(error))
     }
 }
 
@@ -110,7 +110,7 @@ export const updateById = async (req: Request, res: Response): Promise<any> => {
             data: response
         })
     } catch (error) {
-        res.status(500).json(handleErrorMessage(error))
+        res.status(404).json(handleErrorMessage(error))
     }
 }
 

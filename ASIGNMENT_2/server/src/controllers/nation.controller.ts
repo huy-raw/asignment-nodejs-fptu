@@ -1,5 +1,6 @@
 import { handleErrorMessage } from "@/utils/error";
 import { Request, Response } from "express";
+import { isNil } from "lodash";
 import * as NationService from 'services/nation.service'
 import { CreateNationRequest, UpdateNationRequest, QueryOption } from '../utils/request';
 
@@ -18,7 +19,7 @@ export const getNationByOption = async (req: Request, res: Response): Promise<an
             data: response
         })
     } catch (error) {
-        res.status(500).json(handleErrorMessage(error))
+        res.status(404).json(handleErrorMessage(error))
     }
 }
 export const getAllNation = async (req: Request, res: Response): Promise<any> => {
@@ -32,7 +33,7 @@ export const getAllNation = async (req: Request, res: Response): Promise<any> =>
             data: response
         })
     } catch (error) {
-        res.status(500).json(handleErrorMessage(error))
+        res.status(404).json(handleErrorMessage(error))
     }
 }
 
@@ -43,12 +44,18 @@ export const createNation = async (req: Request, res: Response): Promise<any> =>
             description: req.body.description,
             image: req.body.image
         }
+
+        const checkExistNation = await NationService.findByName(payload.name);
+        if (!isNil(checkExistNation)) {
+            return res.status(404).json(`Nation ${payload.name} existed`)
+        }
+
         const response = await NationService.create(payload)
         return res.status(200).json({
             data: response
         })
     } catch (error) {
-        res.status(500).json(handleErrorMessage(error))
+        res.status(404).json(handleErrorMessage(error))
     }
 }
 
@@ -56,9 +63,11 @@ export const getNationById = async (req: Request, res: Response): Promise<any> =
     try {
         const id: any = req.params["id"]
         const response = await NationService.findById(id)
-        return res.status(200).json(response);
+        return res.status(200).json({
+            data: response
+        });
     } catch (error) {
-        res.status(500).json(handleErrorMessage(error))
+        res.status(404).json(handleErrorMessage(error))
     }
 }
 
@@ -70,7 +79,7 @@ export const deleteNationById = async (req: Request, res: Response): Promise<any
             data: response
         });
     } catch (error) {
-        res.status(500).json(handleErrorMessage(error))
+        res.status(404).json(handleErrorMessage(error))
     }
 }
 
@@ -87,6 +96,6 @@ export const updateNationById = async (req: Request, res: Response): Promise<any
             data: response
         })
     } catch (error) {
-        res.status(500).json(handleErrorMessage(error))
+        res.status(404).json(handleErrorMessage(error))
     }
 }

@@ -5,7 +5,7 @@ import { decodeToken } from '../utils/jwt';
 
 export const authMiddleware = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const accessTokenHeader: any = req.headers["AccessToken"]
+        const accessTokenHeader: any = req.headers["authorization"]
         console.log(accessTokenHeader)
         if (isNil(accessTokenHeader)) {
             return res.status(400).json("Token unexisted!!");

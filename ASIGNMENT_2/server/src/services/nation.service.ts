@@ -41,6 +41,14 @@ export const findById = async (id: String) => {
     }
 }
 
+export const findByName = async (name : String) => {
+    try {
+        return await Nation.findOne({ name: name });
+    } catch (error) {
+        throw error
+    }
+}
+
 export const create = async (payload: CreateNationRequest) => {
     try {
         return await Nation.create(payload);

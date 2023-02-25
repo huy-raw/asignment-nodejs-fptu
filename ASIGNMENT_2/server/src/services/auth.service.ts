@@ -40,9 +40,11 @@ export const login = async (payload: LoginRequest) => {
             await User.findOne({ _id: user._id }).updateOne({ refeshToken: refeshtoken })
         } else {
             //check token expired
-            const checkExpiredToken = await decodeToken(user.refeshToken)
 
-            if (!checkExpiredToken) {
+            try {
+                await decodeToken(user.refeshToken)
+            } catch (error) {
+
                 const payloadToken = {
                     id: user._id,
                     role: user.role,
@@ -51,6 +53,7 @@ export const login = async (payload: LoginRequest) => {
                 }
                 const refeshtoken = await generateToken(payloadToken, 60 * 60 * 24);
                 await User.findOne({ _id: user._id }).updateOne({ refeshToken: refeshtoken })
+
             }
         }
         return await User.findById({ _id: user._id })
