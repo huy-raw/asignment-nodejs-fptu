@@ -27,7 +27,7 @@ export const ConfirmModal = (props: any) => {
     }
 
     return (
-        <div id="popup-modal" className="fixed m-auto  z-50  p-4 overflow-x-hidden overflow-y-auto md:inset-0 md:h-full">
+        <div id="popup-modal" className="fixed m-auto mt-20 z-50  p-4 overflow-x-hidden overflow-y-auto md:inset-0 md:h-full">
             <div className="relative w-full h-full max-w-md md:h-auto">
                 <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
                 <div className="fixed inset-0 z-10 overflow-y-auto">

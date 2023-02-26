@@ -10,8 +10,8 @@ export interface ILogin {
 
 const login = async ({ email, password }: ILogin) => {
     try {
-        const response = await axiosClient.post(`/${ROUTE}/`)
-        return response.data
+        const response = await axiosClient.post(`/${ROUTE}/login`, { password, email })
+        return response
     } catch (error) {
         throw error
     }
@@ -25,9 +25,16 @@ export interface IRegister {
 
 const register = async ({ name, password, email }: IRegister) => {
     try {
-        const response = await axiosClient.post(`/${ROUTE}/`)
+        const response = await axiosClient.post(`/${ROUTE}/register`, { name, password, email })
         return response.data
     } catch (error) {
         throw error
     }
 }
+
+const authService = {
+    login,
+    register
+}
+
+export default authService

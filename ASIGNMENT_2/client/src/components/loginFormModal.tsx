@@ -1,5 +1,6 @@
 import { FormikErrors, useFormik } from "formik"
-import {isEmpty} from 'lodash'
+import { isEmpty } from 'lodash'
+import authService from "../services/authService"
 
 interface FormValues {
     email: string,
@@ -29,7 +30,13 @@ export const LoginModal = (props: any) => {
             password: ""
         },
         onSubmit: () => {
-            console.log("!23");
+            authService.login({
+                email: formik.values.email,
+                password: formik.values.password
+            }).then((response) => {
+                window.sessionStorage.setItem("role", response.data.data.role)
+                window.sessionStorage.setItem("isLogged", "true")
+            })
         },
         validate
     })
@@ -91,7 +98,7 @@ export const LoginModal = (props: any) => {
                                     </div>
                                 </form>
                                 <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                                    <button  disabled={isEmpty(formik.values.email) || isEmpty(formik.values.password)} name="submit" type="submit" value="Submit" className="mt-3 inline-flex w-full justify-center rounded-md  border-blue-300 bg-blue-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm disabled:bg-slate-500"  >Save</button>
+                                    <button disabled={isEmpty(formik.values.email) || isEmpty(formik.values.password)} name="submit" type="submit" value="Submit" className="mt-3 inline-flex w-full justify-center rounded-md  border-blue-300 bg-blue-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm disabled:bg-slate-500"  >Save</button>
                                     <button onClick={handleCloseModal} type="button" className="mt-3 inline-flex w-full justify-center rounded-md border border-blue-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Cancel</button>
                                 </div>
 
