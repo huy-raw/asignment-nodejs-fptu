@@ -1,11 +1,15 @@
-import React from "react";
+import { isEmpty } from "lodash";
+import React, { useContext, useEffect } from "react";
 import { useState } from 'react';
+import { AuthContext, AuthContextType } from '../utils/authContext';
 import { LoginModal } from "./loginFormModal";
 import { RegisterModal } from "./registerFormModal";
 
 export const NavBar: React.FC = () => {
     const [loginModal, setLoginModal] = useState<Boolean>(false)
     const [registerModal, setRegisterModal] = useState<Boolean>(false)
+    const { isLogged, login, logout } = useContext(AuthContext) as AuthContextType
+
     const handleShowModalLogin = () => {
         setLoginModal(true)
     }
@@ -18,6 +22,19 @@ export const NavBar: React.FC = () => {
     }
     const handleCloseRegisterModal = () => {
         setRegisterModal(false)
+    }
+
+    useEffect(() => {
+        if (window.sessionStorage.getItem("isLogged") === "true") {
+            login()
+        }
+    }, [isLogged])
+
+    const handleLogout = async () => {
+        window.sessionStorage.removeItem("accesstoken")
+        window.sessionStorage.removeItem("isLogged")
+        window.sessionStorage.removeItem("role")
+        logout()
     }
 
     return <>
@@ -41,8 +58,20 @@ export const NavBar: React.FC = () => {
                         <input type="text" id="search-navbar" className="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search..."/>
                     </div> */}
 
-                    <button onClick={handleShowModalLogin} type="button" className="mr-4 w-20 px-4 py-2 text-sm font-medium text-center text-white bg-green-500 rounded-lg hover:bg-green-600">Login</button>
-                    <button onClick={handleShowModalRegister} type="button" className="w-20 px-4 py-2 text-sm font-medium text-center text-white bg-green-500 rounded-lg hover:bg-green-600">Register</button>
+                    {
+                        !isLogged &&
+                        <div>
+                            <button onClick={handleShowModalLogin} type="button" className="mr-4 w-20 px-4 py-2 text-sm font-medium text-center text-white bg-green-500 rounded-lg hover:bg-green-600">Sign in</button>
+                            <button onClick={handleShowModalRegister} type="button" className="w-22 px-4 py-2 text-sm font-medium text-center text-white bg-green-500 rounded-lg hover:bg-green-600">Sign up</button>
+                        </div>
+                    }
+                    {
+                        isLogged &&
+                        <div>
+                            <button onClick={handleLogout} type="button" className="mr-4 w-auto px-4 py-2 text-sm font-medium text-center text-white bg-green-500 rounded-lg hover:bg-green-600">Sign out</button>
+
+                        </div>
+                    }
                 </div>
                 <div className=" items-center justify-between hidden w-full md:flex md:w-auto md:order-1">
                     <div className="relative mt-3 md:hidden">

@@ -1,7 +1,9 @@
 import { FormikErrors, useFormik } from 'formik';
 import { isEmpty } from 'lodash';
+import { useContext } from 'react';
 import { useQueryClient } from 'react-query';
 import nationService from '../services/nationService';
+import { AuthContext, AuthContextType } from '../utils/authContext';
 import { Action } from '../utils/types';
 
 
@@ -38,6 +40,7 @@ export const NationModal = (props: any) => {
             props.handleCloseModal()
         }
     }
+    const { isLogged, login, logout } = useContext(AuthContext) as AuthContextType
 
     const formik = useFormik({
         initialValues: {

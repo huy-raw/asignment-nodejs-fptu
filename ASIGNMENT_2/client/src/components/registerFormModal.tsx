@@ -1,6 +1,8 @@
 import { FormikErrors, useFormik } from "formik"
 import { isEmpty } from 'lodash'
+import { useContext } from "react"
 import authService from "../services/authService"
+import { AuthContext, AuthContextType } from "../utils/authContext"
 
 
 interface FormValues {
@@ -17,7 +19,7 @@ const validate = (values: FormValues) => {
     if (isEmpty(values.email)) {
         errors.email = "Email is requied"
     }
-  
+
     if (isEmpty(values.password)) {
         errors.password = "Password is requied"
     }
@@ -34,6 +36,7 @@ export const RegisterModal = (props: any) => {
     const handleCloseModal = () => {
         props.handleCloseModal()
     }
+    const { login, handleRole } = useContext(AuthContext) as AuthContextType
 
     const formik = useFormik({
         initialValues: {
@@ -50,7 +53,9 @@ export const RegisterModal = (props: any) => {
             }).then((response) => {
                 window.sessionStorage.setItem("role", response.data.data.role)
                 window.sessionStorage.setItem("isLogged", "true")
+                handleRole(window.sessionStorage.getItem("role") as any)
                 handleCloseModal()
+                login()
             })
         },
         validate

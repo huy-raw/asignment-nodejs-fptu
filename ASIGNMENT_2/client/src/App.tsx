@@ -1,12 +1,17 @@
 import { Route, Routes } from "react-router-dom"
+import { UserLayout } from "./components/layout"
 import { Home } from './pages/home'
 import { Nation } from './pages/nation'
 import { Player } from './pages/player'
-import { UserLayout } from './components/layout';
+import AuthContextProvider from "./utils/authContext"
+
 
 
 const App = () => {
+
+
   return (
+    <AuthContextProvider>
       <UserLayout>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -14,6 +19,8 @@ const App = () => {
           <Route path="/nation" element={<Nation />} />
         </Routes>
       </UserLayout>
+    </AuthContextProvider>
+
   )
 }
 

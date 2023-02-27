@@ -11,7 +11,6 @@ export interface ILogin {
 const login = async ({ email, password }: ILogin) => {
     try {
         const response = await axiosClient.post(`/${ROUTE}/login`, { password, email })
-        console.log(response);
         return response
     } catch (error) {
         throw error
@@ -27,7 +26,7 @@ export interface IRegister {
 const register = async ({ name, password, email }: IRegister) => {
     try {
         const response = await axiosClient.post(`/${ROUTE}/register`, { name, password, email })
-        return response.data
+        return response
     } catch (error) {
         throw error
     }
