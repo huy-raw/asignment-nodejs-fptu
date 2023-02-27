@@ -1,7 +1,7 @@
 import { FormikErrors, useFormik } from "formik"
 import { isEmpty } from 'lodash'
 import authService from "../services/authService"
-import { EMAIL_REGEX } from "../utils/types"
+
 
 interface FormValues {
     email: string,
@@ -17,9 +17,7 @@ const validate = (values: FormValues) => {
     if (isEmpty(values.email)) {
         errors.email = "Email is requied"
     }
-    if (!isEmpty(values.email) && EMAIL_REGEX.test(values.email)) { 
-        errors.email = "Email invalid"
-    }
+  
     if (isEmpty(values.password)) {
         errors.password = "Password is requied"
     }
