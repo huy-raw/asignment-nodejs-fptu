@@ -1,6 +1,7 @@
 import { FormikErrors, useFormik } from "formik"
 import { isEmpty } from 'lodash'
 import authService from "../services/authService"
+import { EMAIL_REGEX } from "../utils/types"
 
 interface FormValues {
     email: string,
@@ -15,6 +16,9 @@ const validate = (values: FormValues) => {
     }
     if (isEmpty(values.password)) {
         errors.password = "Password requied"
+    }
+    if (!isEmpty(values.email) && EMAIL_REGEX.test(values.email)) {
+        errors.email = "Email invalid"
     }
     return errors
 }
@@ -36,6 +40,8 @@ export const LoginModal = (props: any) => {
             }).then((response) => {
                 window.sessionStorage.setItem("role", response.data.data.role)
                 window.sessionStorage.setItem("isLogged", "true")
+                window.sessionStorage.setItem("accesstoken", response.headers["accesstoken"])
+                handleCloseModal()
             })
         },
         validate
@@ -51,7 +57,7 @@ export const LoginModal = (props: any) => {
                             <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
                                 <div className="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
                                     <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-                                        LOGIN
+                                        Sign in to continue.
                                     </h3>
                                     <button onClick={handleCloseModal} type="button" className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" data-modal-hide="staticModal">
                                         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
@@ -60,10 +66,10 @@ export const LoginModal = (props: any) => {
                                 <form onSubmit={formik.handleSubmit}>
                                     <div>
                                         <div className="mb-3">
-                                            <label className="ml-11 font-semibold text-lg">Your Email</label>
+                                            <label className="ml-11 font-semibold text-lg">Your Email Address</label>
                                             <label className="flex justify-center">
                                                 <input
-                                                    className="w-5/6  rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary"
+                                                    className="w-5/6 rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary"
                                                     placeholder="Email"
                                                     type="text"
                                                     name="email"
@@ -98,7 +104,7 @@ export const LoginModal = (props: any) => {
                                     </div>
                                 </form>
                                 <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                                    <button disabled={isEmpty(formik.values.email) || isEmpty(formik.values.password)} name="submit" type="submit" value="Submit" className="mt-3 inline-flex w-full justify-center rounded-md  border-blue-300 bg-blue-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm disabled:bg-slate-500"  >Save</button>
+                                    <button disabled={isEmpty(formik.values.email) || isEmpty(formik.values.password)} name="submit" type="submit" value="Submit" className="mt-3 inline-flex w-full justify-center rounded-md  border-blue-300 bg-blue-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-500 disabled:bg-slate-500">Sign in</button>
                                     <button onClick={handleCloseModal} type="button" className="mt-3 inline-flex w-full justify-center rounded-md border border-blue-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Cancel</button>
                                 </div>
 

@@ -11,6 +11,7 @@ export interface ILogin {
 const login = async ({ email, password }: ILogin) => {
     try {
         const response = await axiosClient.post(`/${ROUTE}/login`, { password, email })
+        console.log(response);
         return response
     } catch (error) {
         throw error
