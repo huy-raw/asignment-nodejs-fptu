@@ -27,7 +27,7 @@ export const PlayerCard = (props: any) => {
     }
 
     const isAdmin = () => {
-        return window.sessionStorage.getItem("role")
+        return window.sessionStorage.getItem("role") === "admin"
     }
     useEffect(() => {
         isAdmin()

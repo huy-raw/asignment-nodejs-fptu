@@ -27,18 +27,18 @@ export const Player: React.FC = () => {
     }
 
 
-    const { isLogged } = useContext(AuthContext) as AuthContextType
-    const isAdmin = () => {
-        return window.sessionStorage.getItem("role")
-    }
-    useEffect(() => {
-        isAdmin()
-    }, [isLogged])
+    // const { isLogged } = useContext(AuthContext) as AuthContextType
+    // const isAdmin = () => {
+    //     return window.sessionStorage.getItem("role")
+    // }
+    // useEffect(() => {
+    //     isAdmin()
+    // }, [isLogged])
 
     return (
         <div className="">
             <div className="px-10 my-10 sm:flex sm:flex-row sm:px-6">
-                {isAdmin() && <button data-modal-target="defaultModal" data-modal-toggle="defaultModal" onClick={handleShowModal} type="button" className="inline-flex w-full justify-center rounded-md border border-transparent bg-green-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm" >Create</button>}
+                { <button data-modal-target="defaultModal" data-modal-toggle="defaultModal" onClick={handleShowModal} type="button" className="inline-flex w-full justify-center rounded-md border border-transparent bg-green-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm" >Create</button>}
             </div>
             <div className="grid lg:grid-cols-4 sm:grid-cols-2 gap-6 mx-20 ">
                 {

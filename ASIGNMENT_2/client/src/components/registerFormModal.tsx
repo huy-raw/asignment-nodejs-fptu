@@ -36,7 +36,7 @@ export const RegisterModal = (props: any) => {
     const handleCloseModal = () => {
         props.handleCloseModal()
     }
-    const { login, handleRole } = useContext(AuthContext) as AuthContextType
+    const { login } = useContext(AuthContext) as AuthContextType
 
     const formik = useFormik({
         initialValues: {
@@ -53,7 +53,6 @@ export const RegisterModal = (props: any) => {
             }).then((response) => {
                 window.sessionStorage.setItem("role", response.data.data.role)
                 window.sessionStorage.setItem("isLogged", "true")
-                handleRole(window.sessionStorage.getItem("role") as any)
                 handleCloseModal()
                 login()
             })
