@@ -7,7 +7,6 @@ import { UserLayout } from './components/layout';
 
 const App = () => {
   return (
-    
       <UserLayout>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -15,8 +14,6 @@ const App = () => {
           <Route path="/nation" element={<Nation />} />
         </Routes>
       </UserLayout>
-    
-
   )
 }
 

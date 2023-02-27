@@ -7,5 +7,7 @@ export const axiosClient = axios.create({
 });
 
 axiosClient.defaults.headers.common["Content-Type"] = "application/json; application/x-www-form-urlencoded; charset=UTF-8";
-axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
-axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+axiosClient.defaults.headers.post['Content-Type'] = 'application/json; charset=utf-8';
+axiosClient.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+axiosClient.defaults.headers.post['Access-Control-Expose-Headers']='accesstoken'
+

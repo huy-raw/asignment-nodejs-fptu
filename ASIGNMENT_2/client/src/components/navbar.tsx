@@ -64,7 +64,7 @@ export const NavBar: React.FC = () => {
                     </ul>
                 </div>
                 {loginModal && <LoginModal handleCloseModal={handleCloseLoginModal} />}
-                {registerModal && <RegisterModal handleCloseModal={handleCloseRegisterModal} /> }
+                {registerModal && <RegisterModal handleCloseModal={handleCloseRegisterModal} />}
             </div>
         </nav>
     </>
