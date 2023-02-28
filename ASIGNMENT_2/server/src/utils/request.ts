@@ -49,3 +49,8 @@ export interface UpdateNationRequest {
     description?: string,
     image?: string
 }
+export interface UpdateUserRequest {
+    name?: string,
+    email?: string,
+    password?: string
+}

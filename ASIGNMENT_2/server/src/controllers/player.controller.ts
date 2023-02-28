@@ -1,6 +1,7 @@
 import { handleErrorMessage } from '@/utils/error';
 import { CreatePlayerRequest, QueryOption, UpdatePlayerRequest } from '@/utils/request';
 import { Request, Response } from 'express'
+import { isNil } from 'lodash';
 import * as PlayerService from 'services/player.service'
 
 
@@ -66,6 +67,9 @@ export const getPlayerByOption = async (req: Request, res: Response): Promise<an
 export const getPlayerById = async (req: Request, res: Response): Promise<any> => {
     try {
         const id: String = req.params['id'] as string
+        if (isNil(id)) {
+            return res.status(404).json("Is empty id")
+        }
         const response = await PlayerService.findById(id);
         if (!response) {
             return res.status(404).json("Not found!")

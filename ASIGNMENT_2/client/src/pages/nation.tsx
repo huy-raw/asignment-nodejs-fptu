@@ -26,14 +26,7 @@ export const Nation = () => {
         setShowModal(false)
     }
 
-    // const { isLogged } = useContext(AuthContext) as AuthContextType
-    // const isAdmin = () => {
-    //     return window.sessionStorage.getItem("role")
-    // }
-    // useEffect(() => {
-    //     isAdmin()
-    // }, [isLogged])
-
+    
 
     return (
 

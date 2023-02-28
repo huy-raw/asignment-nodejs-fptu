@@ -62,6 +62,9 @@ export const createNation = async (req: Request, res: Response): Promise<any> =>
 export const getNationById = async (req: Request, res: Response): Promise<any> => {
     try {
         const id: any = req.params["id"]
+        if (isNil(id)) {
+            return res.status(404).json("Is empty id")
+        }
         const response = await NationService.findById(id)
         return res.status(200).json({
             data: response
